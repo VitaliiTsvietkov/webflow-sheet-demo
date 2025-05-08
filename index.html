@@ -1,38 +1,30 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Dynamic Webflow Replacement</title>
-    <style>
-        body {
-            font-family: sans-serif;
-            padding: 2rem;
-            text-align: center;
-        }
-        img {
-            max-width: 400px;
-            margin-top: 1rem;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <title>Dynamic Webflow Replacement</title>
+  <style>
+    body { font-family: sans-serif; padding: 40px; text-align: center; }
+    img { max-width: 100%; height: auto; margin-top: 20px; }
+  </style>
 </head>
 <body>
-    <h1 id="title">Loading title...</h1>
-    <h3 id="subtitle">Loading subtitle...</h3>
-    <img id="image" src="" alt="Image will appear here" />
-    
-    <script>
-        fetch("https://hook.eu2.make.com/rfumauvfkkiadbi83gdmlsm2uwv74rv8")
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById("title").textContent = data.title || "No title";
-                document.getElementById("subtitle").textContent = data.subtitle || "No subtitle";
-                document.getElementById("image").src = data.image || "";
-            })
-            .catch(error => {
-                document.getElementById("title").textContent = "Error loading content";
-                console.error(error);
-            });
-    </script>
+  <h1 id="title">Loading...</h1>
+  <h2 id="subtitle">Loading subtitle...</h2>
+  <img id="image" src="" alt="Image will appear here" />
+
+  <script>
+    fetch("https://hook.eu2.make.com/rfumauvfkkiadbi83gdmlsm2uwv74rv8")  // <= твой URL
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById("title").innerText = data.title;
+        document.getElementById("subtitle").innerText = data.subtitle;
+        document.getElementById("image").src = data.image;
+      })
+      .catch(error => {
+        console.error("Fetch error:", error);
+        document.getElementById("title").innerText = "Error loading content";
+      });
+  </script>
 </body>
 </html>
